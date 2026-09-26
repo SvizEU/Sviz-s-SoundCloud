@@ -1,0 +1,57 @@
+{
+  "name": "soundcloud-player",
+  "version": "2.3.0",
+  "description": "SoundCloud Desktop Player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "author": "Sviz",
+  "license": "ISC",
+  "build": {
+    "appId": "com.sviz.soundcloudplayer",
+    "productName": "Sviz's SoundCloud",
+    "directories": {
+      "output": "dist"
+    },
+    "extraMetadata": {
+      "description": "Sviz SoundCloud"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "build/icon.ico",
+      "tray/*.png",
+      "controls/*.png"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "publisherName": "Sviz",
+      "executableName": "Sviz SoundCloud",
+      "requestedExecutionLevel": "asInvoker"
+    },
+"nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": "always",
+    "createStartMenuShortcut": true,
+    "shortcutName": "Sviz's SoundCloud",
+    "installerIcon": "build/icon.ico",
+    "uninstallerIcon": "build/icon.ico",
+    "uninstallDisplayName": "Sviz SoundCloud",
+    "artifactName": "Sviz SoundCloud Setup ${version}.${ext}"
+  },
+    "extraResources": [
+      
+        { "from": "tray", "to": "tray" },
+        { "from": "controls", "to": "controls" }
+      
+    ]
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}
